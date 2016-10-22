@@ -34,6 +34,12 @@ class ZoomedImageViewController: UIViewController {
         imageView.loadRemoteImage(byUrl: photo.url)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        updateMinZoomScaleForSize(view.bounds.size)
+    }
+    
     func closeModal() {
         dismiss(animated: true, completion: nil)
     }
@@ -43,15 +49,40 @@ class ZoomedImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func updateMinZoomScaleForSize(_ size: CGSize) {
+        let widthScale = size.width / imageView.bounds.width
+        let heightScale = size.height / imageView.bounds.height
+        let minScale = min(widthScale, heightScale)
+        
+        scrollView.minimumZoomScale = minScale
+        
+        scrollView.zoomScale = minScale
+        
+        print("updateMinZoomScaleForSize \(minScale)")
     }
-    */
+    
+    func updateConstraintsForSize(_ size: CGSize) {
+        let yOffset = max(0, (size.height - imageView.frame.height) / 2)
+        imageViewTopConstraint.constant = yOffset
+        imageViewBottomConstraint.constant = yOffset
+        
+        let xOffset = max(0, (size.width - imageView.frame.width) / 2)
+        imageViewLeadingConstraint.constant = xOffset
+        imageViewTrailingConstraint.constant = xOffset
+        
+        view.layoutIfNeeded()
+    }
 
+}
+
+extension ZoomedImageViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        print("GOT VIEW FOR ZOOMING")
+        return imageView
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        print("scrollViewDidZoom")
+        updateConstraintsForSize(view.bounds.size)
+    }
 }

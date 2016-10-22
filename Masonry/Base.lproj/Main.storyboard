@@ -78,19 +78,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6h-Em-Fz0">
-                                <frame key="frameInset" minY="20" width="375" height="647"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y6h-Em-Fz0">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ppS-hj-nPI">
-                                        <rect key="frame" x="67" y="259" width="240" height="128"/>
-                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ppS-hj-nPI"/>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ppS-hj-nPI" secondAttribute="trailing" constant="68" id="6Uo-Ge-kfw"/>
+                                    <constraint firstItem="ppS-hj-nPI" firstAttribute="centerY" secondItem="Y6h-Em-Fz0" secondAttribute="centerY" id="EdG-G1-J6B"/>
+                                    <constraint firstItem="ppS-hj-nPI" firstAttribute="centerX" secondItem="Y6h-Em-Fz0" secondAttribute="centerX" id="PiC-s4-HkH"/>
                                     <constraint firstItem="ppS-hj-nPI" firstAttribute="leading" secondItem="Y6h-Em-Fz0" secondAttribute="leading" constant="67" id="V7V-ic-eY9"/>
                                     <constraint firstAttribute="bottom" secondItem="ppS-hj-nPI" secondAttribute="bottom" constant="260" id="VrP-zX-aZb"/>
                                     <constraint firstItem="ppS-hj-nPI" firstAttribute="top" secondItem="Y6h-Em-Fz0" secondAttribute="top" constant="259" id="i8J-kd-vhr"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="wzp-0G-z9u" id="d7D-2S-YmO"/>
+                                </connections>
                             </scrollView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9C-sH-PBy">
                                 <items>
