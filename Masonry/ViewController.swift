@@ -25,7 +25,8 @@ class ViewController: UIViewController {
         
         // Use clear effect
         let navBar = self.navigationController?.navigationBar
-        navBar!.backgroundColor = UIColor.clear
+        // Use clear for more blur colour coming through: navBar!.backgroundColor = UIColor.clear
+        navBar!.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:0.9)
         navBar!.isTranslucent = true
         navBar!.setBackgroundImage(UIImage(), for: .default)
         navBar!.shadowImage = UIImage()

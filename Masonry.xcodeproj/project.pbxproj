@@ -148,7 +148,7 @@
 				TargetAttributes = {
 					C1BC9C4E1DBBA7770037F2AE = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 3ZY6N83939;
+						DevelopmentTeam = 6MHSLFY6P7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -315,7 +315,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3ZY6N83939;
+				DEVELOPMENT_TEAM = 6MHSLFY6P7;
 				INFOPLIST_FILE = Masonry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dawsonandrews.Masonry;
@@ -328,7 +328,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3ZY6N83939;
+				DEVELOPMENT_TEAM = 6MHSLFY6P7;
 				INFOPLIST_FILE = Masonry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dawsonandrews.Masonry;
