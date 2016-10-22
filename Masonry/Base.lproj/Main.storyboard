@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wiC-qr-BUa">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Masonry" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4ST-k1-G3F">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="xxs-RT-4y8" customClass="PinterestLayout" customModule="Masonry" customModuleProvider="target"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="1Mb-zQ-2D5" customClass="PhotoCell" customModule="Masonry" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oa6-DN-X50"/>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Oa6-DN-X50" firstAttribute="top" secondItem="1Mb-zQ-2D5" secondAttribute="top" id="XtS-2J-GJb"/>
+                                            <constraint firstAttribute="bottom" secondItem="Oa6-DN-X50" secondAttribute="bottom" id="eJu-IL-mcE"/>
+                                            <constraint firstItem="Oa6-DN-X50" firstAttribute="leading" secondItem="1Mb-zQ-2D5" secondAttribute="leading" id="miX-5d-k3M"/>
+                                            <constraint firstAttribute="trailing" secondItem="Oa6-DN-X50" secondAttribute="trailing" id="vSQ-hA-MnS"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="Oa6-DN-X50" id="acl-xe-BtV"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="gRR-JE-7B4"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ocX-nM-1Jo"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4ST-k1-G3F" secondAttribute="bottom" id="K30-kQ-B0d"/>
+                            <constraint firstItem="4ST-k1-G3F" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PKQ-VP-rWm"/>
+                            <constraint firstItem="4ST-k1-G3F" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WP6-Gm-FUz"/>
+                            <constraint firstAttribute="trailing" secondItem="4ST-k1-G3F" secondAttribute="trailing" id="jhA-oY-PDg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="SkD-37-hbj"/>
+                    <connections>
+                        <outlet property="collectionView" destination="4ST-k1-G3F" id="hy9-hh-QPa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="137.18140929535232"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="utw-3V-tfm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wiC-qr-BUa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sTu-6e-XIr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="l9j-ue-cYP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jbA-ai-gds" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="294" y="137"/>
+        </scene>
+    </scenes>
+</document>
