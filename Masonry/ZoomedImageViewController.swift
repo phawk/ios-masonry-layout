@@ -14,10 +14,6 @@ class ZoomedImageViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +25,6 @@ class ZoomedImageViewController: UIViewController {
         
         view.backgroundColor = UIColor.black
 
-        print("Zoomed View loading image \(photo.url)")
-        
-        scrollView.minimumZoomScale = 0.5
-        scrollView.zoomScale = 1.0
-        scrollView.maximumZoomScale = 2.0
-        scrollView.bounces = false
         scrollView.delegate = self
         
         imageView.loadRemoteImage(byUrl: photo.url) { error in
@@ -45,7 +35,10 @@ class ZoomedImageViewController: UIViewController {
             
             print("Setup updateMinZoomScaleForSize!!!")
             
-            // self.updateMinZoomScaleForSize(self.view.bounds.size)
+            self.imageView.frame = self.scrollView.frame
+            
+            self.updateMinZoomScaleForSize(self.view.bounds.size)
+            self.adjustCenterPosition()
         }
     }
     
@@ -58,6 +51,13 @@ class ZoomedImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        updateMinZoomScaleForSize(self.view.bounds.size)
+        adjustCenterPosition()
+    }
+    
     func updateMinZoomScaleForSize(_ size: CGSize) {
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
@@ -65,21 +65,17 @@ class ZoomedImageViewController: UIViewController {
 
         scrollView.minimumZoomScale = minScale
         scrollView.zoomScale = minScale
+        scrollView.maximumZoomScale = minScale * 2
     }
     
-    func updateConstraintsForSize(_ size: CGSize) {
-        print("updateConstraintsForSize \(imageView.frame)")
-        let yOffset = max(0, (size.height - imageView.frame.height) / 2)
-        imageViewTopConstraint.constant = yOffset
-        imageViewBottomConstraint.constant = yOffset
+    func adjustCenterPosition() {
+        let scrollViewSize = scrollView.bounds
+        let imageSize = imageView.frame
         
-        let xOffset = max(0, (size.width - imageView.frame.width) / 2)
-        imageViewLeadingConstraint.constant = xOffset
-        imageViewTrailingConstraint.constant = xOffset
+        let horizontalSpacing = scrollViewSize.width > imageSize.width ? (scrollViewSize.width - imageSize.width) / 2 : 0
+        let verticalSpacing = scrollViewSize.height > imageSize.height ? (scrollViewSize.height - imageSize.height) / 2 : 0
         
-        print("yOffset: \(yOffset) xOffset: \(xOffset)")
-        
-        view.layoutIfNeeded()
+        scrollView.contentInset = UIEdgeInsetsMake(verticalSpacing, horizontalSpacing, verticalSpacing, horizontalSpacing)
     }
 
 }
@@ -90,6 +86,6 @@ extension ZoomedImageViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        updateConstraintsForSize(view.bounds.size)
+        adjustCenterPosition()
     }
 }
