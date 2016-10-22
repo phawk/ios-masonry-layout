@@ -66,12 +66,60 @@
             </objects>
             <point key="canvasLocation" x="1076" y="137.18140929535232"/>
         </scene>
+        <!--Zoomed Image View Controller-->
+        <scene sceneID="6OC-PL-8mx">
+            <objects>
+                <viewController storyboardIdentifier="zoomedImageViewController" id="wzp-0G-z9u" customClass="ZoomedImageViewController" customModule="Masonry" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eww-gx-P4c"/>
+                        <viewControllerLayoutGuide type="bottom" id="aFK-fc-eCb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ffa-mf-b21">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6h-Em-Fz0">
+                                <frame key="frameInset" minY="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ppS-hj-nPI">
+                                        <rect key="frame" x="67" y="259" width="240" height="128"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ppS-hj-nPI" secondAttribute="trailing" constant="68" id="6Uo-Ge-kfw"/>
+                                    <constraint firstItem="ppS-hj-nPI" firstAttribute="leading" secondItem="Y6h-Em-Fz0" secondAttribute="leading" constant="67" id="V7V-ic-eY9"/>
+                                    <constraint firstAttribute="bottom" secondItem="ppS-hj-nPI" secondAttribute="bottom" constant="260" id="VrP-zX-aZb"/>
+                                    <constraint firstItem="ppS-hj-nPI" firstAttribute="top" secondItem="Y6h-Em-Fz0" secondAttribute="top" constant="259" id="i8J-kd-vhr"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Y6h-Em-Fz0" firstAttribute="leading" secondItem="ffa-mf-b21" secondAttribute="leading" id="9c6-gN-gnX"/>
+                            <constraint firstAttribute="trailing" secondItem="Y6h-Em-Fz0" secondAttribute="trailing" id="GJM-dK-sj3"/>
+                            <constraint firstItem="aFK-fc-eCb" firstAttribute="top" secondItem="Y6h-Em-Fz0" secondAttribute="bottom" id="IS2-am-fDW"/>
+                            <constraint firstItem="Y6h-Em-Fz0" firstAttribute="top" secondItem="eww-gx-P4c" secondAttribute="bottom" id="OLz-CQ-Dvk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="ppS-hj-nPI" id="97K-3U-waY"/>
+                        <outlet property="imageViewBottomConstraint" destination="VrP-zX-aZb" id="Mdp-hF-7zR"/>
+                        <outlet property="imageViewLeadingConstraint" destination="V7V-ic-eY9" id="htC-z1-sbh"/>
+                        <outlet property="imageViewTopConstraint" destination="i8J-kd-vhr" id="RhM-Ph-u9W"/>
+                        <outlet property="imageViewTrailingConstraint" destination="6Uo-Ge-kfw" id="tkZ-3R-XKq"/>
+                        <outlet property="scrollView" destination="Y6h-Em-Fz0" id="3kv-RF-cZU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wwz-bJ-z1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1889" y="136"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="utw-3V-tfm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wiC-qr-BUa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sTu-6e-XIr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sTu-6e-XIr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
