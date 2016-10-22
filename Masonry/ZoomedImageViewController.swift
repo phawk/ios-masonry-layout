@@ -31,13 +31,16 @@ class ZoomedImageViewController: UIViewController {
 
         print("Zoomed View loading image \(photo.url)")
         
-        imageView.loadRemoteImage(byUrl: photo.url)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        updateMinZoomScaleForSize(view.bounds.size)
+        imageView.loadRemoteImage(byUrl: photo.url) { error in
+            if error != nil {
+                print("Error loading image! \(error?.localizedDescription)")
+                return
+            }
+            
+            print("Setup updateMinZoomScaleForSize!!!")
+            
+            self.updateMinZoomScaleForSize(self.view.bounds.size)
+        }
     }
     
     func closeModal() {
@@ -53,15 +56,13 @@ class ZoomedImageViewController: UIViewController {
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
         let minScale = min(widthScale, heightScale)
-        
+
         scrollView.minimumZoomScale = minScale
-        
         scrollView.zoomScale = minScale
-        
-        print("updateMinZoomScaleForSize \(minScale)")
     }
     
     func updateConstraintsForSize(_ size: CGSize) {
+        print("updateConstraintsForSize \(imageView.frame)")
         let yOffset = max(0, (size.height - imageView.frame.height) / 2)
         imageViewTopConstraint.constant = yOffset
         imageViewBottomConstraint.constant = yOffset
@@ -70,6 +71,8 @@ class ZoomedImageViewController: UIViewController {
         imageViewLeadingConstraint.constant = xOffset
         imageViewTrailingConstraint.constant = xOffset
         
+        print("yOffset: \(yOffset) xOffset: \(xOffset)")
+        
         view.layoutIfNeeded()
     }
 
@@ -77,12 +80,10 @@ class ZoomedImageViewController: UIViewController {
 
 extension ZoomedImageViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        print("GOT VIEW FOR ZOOMING")
         return imageView
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        print("scrollViewDidZoom")
         updateConstraintsForSize(view.bounds.size)
     }
 }

@@ -8,16 +8,20 @@
 
 import UIKit
 
+enum RemoteImageLoadError : Error {
+    case MailformedURL(String)
+    case DownloadError(String)
+    case BadData(String)
+    case HTTPError(String)
+}
+
 extension UIImageView {
-    func loadRemoteImage(byUrl webUrl: String) {
+    func loadRemoteImage(byUrl webUrl: String, onCompletion: ((RemoteImageLoadError?) -> Void)?) {
         let url = URL(string: webUrl)
         
-        func loadRemoteImageLogger(_ info: String) {
-            print("UIImageView:loadImageByUrl: \(info)")
-        }
-        
         guard url != nil else {
-            loadRemoteImageLogger("malformed webUrl: \(webUrl)")
+            onCompletion?(RemoteImageLoadError.MailformedURL("webUrl: \(webUrl)"))
+            
             return
         }
         
@@ -36,31 +40,39 @@ extension UIImageView {
             }
             
             guard error == nil else {
-                loadRemoteImageLogger("Error downloading image: \(error!.localizedDescription)")
+                DispatchQueue.main.async {
+                    onCompletion?(RemoteImageLoadError.DownloadError("Error downloading image: \(error!.localizedDescription)"))
+                }
                 return
             }
             guard data != nil else {
-                loadRemoteImageLogger("Error with data: \(error?.localizedDescription)")
+                DispatchQueue.main.async {
+                    onCompletion?(RemoteImageLoadError.BadData("Error with data: \(error?.localizedDescription)"))
+                }
                 return
             }
             guard let httpResp = resp as? HTTPURLResponse else {
-                loadRemoteImageLogger("Error with httpResp")
+                DispatchQueue.main.async {
+                    onCompletion?(RemoteImageLoadError.HTTPError("Error with httpResp"))
+                }
                 return
             }
             guard httpResp.statusCode == 200 else {
-                loadRemoteImageLogger("Error with http status code \(httpResp.statusCode)")
+                DispatchQueue.main.async {
+                    onCompletion?(RemoteImageLoadError.HTTPError("Error with http status code \(httpResp.statusCode)"))
+                }
                 return
             }
             
             DispatchQueue.main.async {
-                loadRemoteImageLogger("\(webUrl) loaded")
                 let image = UIImage(data: data!)
                 
                 if image != nil {
                     self.image = image
+                    onCompletion?(nil)
                 }
                 else {
-                    loadRemoteImageLogger("failed to load image, data mismatch")
+                    onCompletion?(RemoteImageLoadError.BadData("failed to load image, data mismatch"))
                 }
             }
         }

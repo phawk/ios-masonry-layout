@@ -11,7 +11,7 @@ import UIKit
 class PhotoCell: UICollectionViewCell {
     var photo: Photo! {
         didSet {
-            imageView.loadRemoteImage(byUrl: photo.url)
+            imageView.loadRemoteImage(byUrl: photo.url, onCompletion: nil)
         }
     }
     @IBOutlet var imageView: UIImageView!

@@ -80,15 +80,15 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y6h-Em-Fz0">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ppS-hj-nPI"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ppS-hj-nPI"/>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ppS-hj-nPI" secondAttribute="trailing" constant="68" id="6Uo-Ge-kfw"/>
-                                    <constraint firstItem="ppS-hj-nPI" firstAttribute="centerY" secondItem="Y6h-Em-Fz0" secondAttribute="centerY" id="EdG-G1-J6B"/>
-                                    <constraint firstItem="ppS-hj-nPI" firstAttribute="centerX" secondItem="Y6h-Em-Fz0" secondAttribute="centerX" id="PiC-s4-HkH"/>
                                     <constraint firstItem="ppS-hj-nPI" firstAttribute="leading" secondItem="Y6h-Em-Fz0" secondAttribute="leading" constant="67" id="V7V-ic-eY9"/>
                                     <constraint firstAttribute="bottom" secondItem="ppS-hj-nPI" secondAttribute="bottom" constant="260" id="VrP-zX-aZb"/>
                                     <constraint firstItem="ppS-hj-nPI" firstAttribute="top" secondItem="Y6h-Em-Fz0" secondAttribute="top" constant="259" id="i8J-kd-vhr"/>
+                                    <constraint firstItem="ppS-hj-nPI" firstAttribute="centerY" secondItem="Y6h-Em-Fz0" secondAttribute="centerY" id="opl-3y-J0g"/>
+                                    <constraint firstItem="ppS-hj-nPI" firstAttribute="centerX" secondItem="Y6h-Em-Fz0" secondAttribute="centerX" id="x1r-t8-SPb"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="wzp-0G-z9u" id="d7D-2S-YmO"/>
