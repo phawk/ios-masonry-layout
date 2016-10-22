@@ -31,6 +31,12 @@ class ZoomedImageViewController: UIViewController {
 
         print("Zoomed View loading image \(photo.url)")
         
+        scrollView.minimumZoomScale = 0.5
+        scrollView.zoomScale = 1.0
+        scrollView.maximumZoomScale = 2.0
+        scrollView.bounces = false
+        scrollView.delegate = self
+        
         imageView.loadRemoteImage(byUrl: photo.url) { error in
             if error != nil {
                 print("Error loading image! \(error?.localizedDescription)")
@@ -39,7 +45,7 @@ class ZoomedImageViewController: UIViewController {
             
             print("Setup updateMinZoomScaleForSize!!!")
             
-            self.updateMinZoomScaleForSize(self.view.bounds.size)
+            // self.updateMinZoomScaleForSize(self.view.bounds.size)
         }
     }
     
