@@ -11,6 +11,7 @@ import UIKit
 class ZoomedImageViewController: UIViewController {
     var photo: Photo!
 
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
@@ -20,10 +21,21 @@ class ZoomedImageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.setBackgroundImage(UIImage(), for: .default)
+        navBar.backgroundColor = UIColor.clear
+        navBar.shadowImage = UIImage()
+        navBar.topItem!.rightBarButtonItem?.action = #selector(self.closeModal)
+        
+        view.backgroundColor = UIColor.black
 
         print("Zoomed View loading image \(photo.url)")
         
         imageView.loadRemoteImage(byUrl: photo.url)
+    }
+    
+    func closeModal() {
+        dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
