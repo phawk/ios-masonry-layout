@@ -41,6 +41,41 @@ class ZoomedImageViewController: UIViewController {
             self.updateMinZoomScaleForSize(self.view.bounds.size)
             self.adjustCenterPosition()
         }
+        
+        imageView.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.doubleTapGestureRecognizer(_:)))
+        tapGesture.numberOfTapsRequired = 2
+        imageView.addGestureRecognizer(tapGesture)
+    }
+    
+    func doubleTapGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
+        let zoomScale = scrollView.zoomScale
+        // zoom out if it bigger than middle scale point. Else, zoom in
+        if zoomScale >= scrollView.maximumZoomScale / 2.0 {
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+        }
+        else {
+            let center = gestureRecognizer.location(in: gestureRecognizer.view)
+            let zoomRect = zoomRectForScale(scrollView.maximumZoomScale, center: center)
+            scrollView.zoom(to: zoomRect, animated: true)
+        }
+    }
+    
+    fileprivate func zoomRectForScale(_ scale: CGFloat, center: CGPoint) -> CGRect {
+        var zoomRect = CGRect.zero
+        
+        // the zoom rect is in the content view's coordinates.
+        // at a zoom scale of 1.0, it would be the size of the imageScrollView's bounds.
+        // as the zoom scale decreases, so more content is visible, the size of the rect grows.
+        zoomRect.size.height = scrollView.frame.size.height / scale
+        zoomRect.size.width  = scrollView.frame.size.width  / scale
+        
+        // choose an origin so as to get the right center.
+        zoomRect.origin.x    = center.x - (zoomRect.size.width  / 2.0)
+        zoomRect.origin.y    = center.y - (zoomRect.size.height / 2.0)
+        
+        return zoomRect
     }
 
     override func didReceiveMemoryWarning() {
