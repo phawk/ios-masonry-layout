@@ -9,7 +9,9 @@
 import UIKit
 
 class CarouselViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     var photos: [Photo]!
     var startingIndex: Int = 0
     
@@ -20,7 +22,7 @@ class CarouselViewController: UIPageViewController, UIPageViewControllerDataSour
         delegate = self
         
         // Add a close cross
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 54))
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
         navBar.setItems([UINavigationItem()], animated: false)
         navBar.topItem!.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(self.closeModal))
         navBar.topItem!.rightBarButtonItem?.tintColor = UIColor.white

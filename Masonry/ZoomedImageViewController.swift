@@ -10,8 +10,6 @@ import UIKit
 
 /*
  TODO:
- - Add UIPagedViewController to allow sliding next/prev images
- - Add double tap to zoom in or out
  - Drag image to close view
  */
 
