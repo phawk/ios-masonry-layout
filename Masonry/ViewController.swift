@@ -11,6 +11,7 @@ import AVFoundation
 
 class ViewController: UIViewController {
     var photos = Photo.all()
+    var pageViewController: CarouselViewController!
     
     @IBOutlet var collectionView: UICollectionView?
 
@@ -70,15 +71,11 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photo = photos[indexPath.item]
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let zoomedImageViewController = storyboard.instantiateViewController(withIdentifier: "zoomedImageViewController") as! ZoomedImageViewController
-
-        zoomedImageViewController.modalPresentationStyle = .fullScreen
-        
-        zoomedImageViewController.photo = photo
-
-        present(zoomedImageViewController, animated: true, completion: nil)
+        pageViewController = CarouselViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        pageViewController.modalPresentationStyle = .fullScreen
+        pageViewController.photos = photos
+        pageViewController.startingIndex = indexPath.item
+        present(pageViewController, animated: true, completion: nil)
     }
 }
 

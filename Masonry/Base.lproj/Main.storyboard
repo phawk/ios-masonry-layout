@@ -78,8 +78,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y6h-Em-Fz0">
-                                <frame key="frameInset" minY="20" width="375" height="603"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y6h-Em-Fz0">
+                                <frame key="frameInset" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ppS-hj-nPI">
                                         <rect key="frame" x="67" y="259" width="320" height="320"/>
@@ -90,32 +91,13 @@
                                     <outlet property="delegate" destination="wzp-0G-z9u" id="d7D-2S-YmO"/>
                                 </connections>
                             </scrollView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9C-sH-PBy">
-                                <items>
-                                    <navigationItem id="XRa-de-oRk">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="4DM-c5-Gvl">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Y6h-Em-Fz0" firstAttribute="leading" secondItem="ffa-mf-b21" secondAttribute="leading" id="9c6-gN-gnX"/>
-                            <constraint firstAttribute="trailing" secondItem="Y6h-Em-Fz0" secondAttribute="trailing" id="GJM-dK-sj3"/>
-                            <constraint firstItem="aFK-fc-eCb" firstAttribute="top" secondItem="Y6h-Em-Fz0" secondAttribute="bottom" id="IS2-am-fDW"/>
-                            <constraint firstItem="Y6h-Em-Fz0" firstAttribute="top" secondItem="eww-gx-P4c" secondAttribute="bottom" id="OLz-CQ-Dvk"/>
-                            <constraint firstItem="z9C-sH-PBy" firstAttribute="top" secondItem="eww-gx-P4c" secondAttribute="bottom" id="Tkf-Fe-V7M"/>
-                            <constraint firstAttribute="trailing" secondItem="z9C-sH-PBy" secondAttribute="trailing" id="Wlq-j6-LYb"/>
-                            <constraint firstItem="z9C-sH-PBy" firstAttribute="leading" secondItem="ffa-mf-b21" secondAttribute="leading" id="t6w-3i-dkZ"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="ppS-hj-nPI" id="97K-3U-waY"/>
-                        <outlet property="navBar" destination="z9C-sH-PBy" id="Xmf-KQ-AHa"/>
                         <outlet property="scrollView" destination="Y6h-Em-Fz0" id="3kv-RF-cZU"/>
                     </connections>
                 </viewController>

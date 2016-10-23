@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C10855281DBBE4860067A829 /* ZoomedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10855271DBBE4860067A829 /* ZoomedImageViewController.swift */; };
+		C15880261DBC23D0002EEDE8 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15880251DBC23D0002EEDE8 /* CarouselViewController.swift */; };
 		C1BC9C531DBBA7770037F2AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC9C521DBBA7770037F2AE /* AppDelegate.swift */; };
 		C1BC9C551DBBA7770037F2AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC9C541DBBA7770037F2AE /* ViewController.swift */; };
 		C1BC9C581DBBA7770037F2AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BC9C561DBBA7770037F2AE /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		C10855271DBBE4860067A829 /* ZoomedImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomedImageViewController.swift; sourceTree = "<group>"; };
+		C15880251DBC23D0002EEDE8 /* CarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		C1BC9C4F1DBBA7770037F2AE /* Masonry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Masonry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1BC9C521DBBA7770037F2AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1BC9C541DBBA7770037F2AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				C1BC9C541DBBA7770037F2AE /* ViewController.swift */,
 				C10855271DBBE4860067A829 /* ZoomedImageViewController.swift */,
+				C15880251DBC23D0002EEDE8 /* CarouselViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				C1BC9C6C1DBBABE60037F2AE /* PhotoCell.swift in Sources */,
 				C1BC9C661DBBA8C20037F2AE /* PinterestLayout.swift in Sources */,
 				C10855281DBBE4860067A829 /* ZoomedImageViewController.swift in Sources */,
+				C15880261DBC23D0002EEDE8 /* CarouselViewController.swift in Sources */,
 				C1BC9C551DBBA7770037F2AE /* ViewController.swift in Sources */,
 				C1BC9C6F1DBBACD50037F2AE /* UIImageView.swift in Sources */,
 				C1BC9C531DBBA7770037F2AE /* AppDelegate.swift in Sources */,

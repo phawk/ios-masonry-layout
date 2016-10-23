@@ -14,6 +14,13 @@ struct Photo {
     var height: Int
 }
 
+extension Photo: Equatable {
+    static func ==(lhs: Photo, rhs: Photo) -> Bool {
+        return
+            lhs.url == rhs.url
+    }
+}
+
 extension Photo {
     static func all() -> [Photo] {
         return [

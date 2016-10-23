@@ -8,6 +8,13 @@
 
 import UIKit
 
+/*
+ TODO:
+ - Add UIPagedViewController to allow sliding next/prev images
+ - Add double tap to zoom in or out
+ - Drag image to close view
+ */
+
 class ZoomedImageViewController: UIViewController {
     var photo: Photo!
 
@@ -18,14 +25,10 @@ class ZoomedImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navBar.setBackgroundImage(UIImage(), for: .default)
-        navBar.backgroundColor = UIColor.clear
-        navBar.shadowImage = UIImage()
-        navBar.topItem!.rightBarButtonItem?.action = #selector(self.closeModal)
-        
         view.backgroundColor = UIColor.black
 
         scrollView.delegate = self
+        scrollView.frame = view.frame
         
         imageView.loadRemoteImage(byUrl: photo.url) { error in
             if error != nil {
@@ -33,17 +36,11 @@ class ZoomedImageViewController: UIViewController {
                 return
             }
             
-            print("Setup updateMinZoomScaleForSize!!!")
-            
             self.imageView.frame = self.scrollView.frame
             
             self.updateMinZoomScaleForSize(self.view.bounds.size)
             self.adjustCenterPosition()
         }
-    }
-    
-    func closeModal() {
-        dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +62,7 @@ class ZoomedImageViewController: UIViewController {
 
         scrollView.minimumZoomScale = minScale
         scrollView.zoomScale = minScale
-        scrollView.maximumZoomScale = minScale * 2
+        scrollView.maximumZoomScale = minScale * 2.5
     }
     
     func adjustCenterPosition() {
